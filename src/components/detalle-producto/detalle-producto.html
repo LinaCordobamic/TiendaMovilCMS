@@ -1,0 +1,51 @@
+<ion-header class="header-detalle">
+    <ion-toolbar>
+      <ion-title>
+        Detalle del producto
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+            <ion-icon name="md-arrow-round-back"></ion-icon>
+        
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="contenido-detalle">
+   
+    <ion-grid>
+      <ion-row>
+          <ion-col col-12 *ngFor="let producto of detalleproducto">
+              <ion-card class="card-producto" no-margin>
+                <ion-card-content no-padding class="card-img">
+                  <span class="cant-carrito right">{{producto.carrito}}</span>
+                  <img src="{{producto.imagen}}" alt="Card image cap">
+                  <p class="cinta-info">{{producto.descuento}}</p>
+                </ion-card-content>
+                <ion-card-content class="card-body">
+                  <div class="card-title">
+                      <h2 class="nombre-producto">{{producto.nombre}}</h2>
+                      <h3 class="info-producto">{{producto.info}}</h3>
+                      <h3 class="categoria-producto">{{producto.categoria}}</h3>
+                  </div>
+                  <div class="card-text">
+                    <h1 class="precio-producto">${{producto.precio}}</h1>
+                  </div>
+
+                <div class="btn btn-cantidad">
+                <!-- <button ion-button class="menos"><ion-icon name="md-remove"></ion-icon></button>
+                    <div class="unidades">34</div>
+                    <button ion-button class="mas"><ion-icon name="md-add"></ion-icon></button>-->
+                 <div class="wrapper"><button ion-button class="btn btn-accion">Agregar</button></div>
+                </div>
+
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+
+      </ion-row>
+    </ion-grid>
+ 
+
+  </ion-content>

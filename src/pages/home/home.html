@@ -1,17 +1,30 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+
+
+
+
+<ion-content>
+
+  <carusel></carusel>
+
+  <ion-card no-margin class="cabecera">
+      <ion-list class="wrapper">
+          <ion-item class="datos">
+             <ion-icon name="md-basket" item-start></ion-icon>
+              <a class="link" (click)="presentPopover($event)">Ver datos tienda</a>
+          </ion-item>
+
+          <ion-item class="total">
+             <h2>Total</h2>
+             <span>$210.500</span>
+            </ion-item>
+        </ion-list>
+  </ion-card>
+
+  <tarjeta-producto></tarjeta-producto>
+
+  <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
 </ion-content>
+
+

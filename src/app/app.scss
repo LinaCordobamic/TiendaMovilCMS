@@ -14,3 +14,439 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/*************** MIXINS ************/
+
+@mixin tablet-big {
+    @media only screen and (min-width: 1024px) and (max-width:1366px) {
+    @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @content;
+    }
+}
+
+
+@mixin tablet-down {
+    @media only screen and (max-width: 768px) {
+    @content;
+    }
+}
+
+@mixin tablet-up {
+    @media only screen and (min-width: 768px) {
+    @content;
+    }
+}
+
+@mixin smartphone-small {
+    @media only screen and (max-width: 360px)  {
+    @content;
+    }
+}
+
+
+@mixin overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgba(8, 8, 8, 0.45);
+    left: 0;
+    right: 0;
+}
+
+@mixin box-shadow {
+    box-shadow: 0 1px 10px rgba(197, 199, 220, 0.3)
+}
+@mixin limit-character {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/**************** FUENTES **************/
+html{
+    font-size: 50%;
+    @include tablet {font-size:80%}
+    @include tablet-big {font-size:100%}
+    @include smartphone-small { font-size: 45.5%;}
+  }
+
+.app-root, ion-app.ios, ion-app.md {font-family: var(--fontFamily)}
+.no-border {
+    border:none;
+    .item-inner, &:last-child {border:none!important}
+}
+/*************** GENERAL **************/
+a {cursor: pointer;}
+h1,h2,h3,h4,h5 {color:$negro}
+p, .label {color:$gris-oscuro}
+.label {line-height: 1.8;}
+.col {@include tablet-big{padding:8px}}
+.icono {
+    width:25px!important;
+    vertical-align: middle;
+    @include tablet {width:40px!important}
+    @include tablet-big {width:60px!important}
+}
+.overlay {@include overlay;}
+.item-ios h2, .item-md h2 {font-size:1.8rem}
+.content-ios, .content-md {background:$fondo}
+.card-ios p, .card-md p {font-size:1.55rem}
+.btn {
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    position: relative;
+    transition: background-color .3s;
+    overflow: hidden;
+}
+
+
+/********** COMPONENTS ************/
+/* Tabs*/
+.tabs-ios .tabbar,
+.tabs-md .tabbar {
+ @include tablet-down {padding: 2px 0px;}
+ @include tablet {padding: 10px 0px}
+ background:white;
+ border-top:none;
+@include box-shadow;
+ .tab-button-text {color:$gris;font-size:1.6rem}
+ .tab-button-icon {
+     color:$gris;font-size:2.5rem;height:auto;
+     @include tablet {font-size:3rem;height:40px}
+    @include tablet-big {font-size:2.5rem;height:40px}
+}
+ .tab-button[aria-selected=true] .tab-button-icon,
+ .tab-button[aria-selected=true] .tab-button-text {color:var(--colorPrimario);transform: none;}
+}
+
+
+/* Carusel */
+.slides {
+    height:25%;
+    .logo {position:relative;width:50%;@include tablet-up{width: 35%;}}
+    .link {position:absolute;color:white;font-weight:600;top:5%;right:5%;}
+}
+.swiper-slide {background-size:cover!important;font-size:inherit}
+.swiper-pagination-bullet-active {background-color: var(--colorSecundario)}
+
+
+/* Datos tienda*/
+.datos-tienda {
+    .label-ios, .label-md {margin:0px}
+}
+.popover-content {
+    width: 80%!important;
+    @include box-shadow;
+}
+
+.popover-md {background: rgba(58, 58, 58, 0.05);}
+.popover-md .popover-arrow {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    width: 20px;
+    height: 10px;
+    top: 205.75px;
+    left: 25%;
+}
+
+.popover-md .popover-arrow::after {
+    left: 3px;
+    top: 0px;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 10;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    content: "";
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.popover-md .popover-content {
+    left: 2%!important;
+    top: 33%!important;
+    border-radius:5px!important
+}
+.list {padding-top: 20px}
+.list-header {
+    text-transform:none;
+    letter-spacing: 0pt;
+    h2 {font-weight: 700}
+}
+.list-md {padding-top:15px}
+.list-header-md {
+    margin-bottom:5px
+}
+
+/* DESCUENTOS, CANTIDADES CARIRTO*/
+.cinta-info {
+    color:white!important;
+    position:absolute;
+    bottom:0;
+    width:auto;
+    padding:0px 10px;
+    margin:0px;
+    background:var(--colorSecundario);
+    text-align: center;
+    color:white;
+    font-weight:550!important;
+    @include limit-character
+    }
+
+.cant-carrito {
+    background: var(--colorPrimario);
+    color: white;
+    border-radius: 0px;
+    padding: 0px 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 25px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    }
+.cant-carrito.right {
+    position: absolute;
+    z-index: 2;
+    top: 0%;
+    right: 0%;
+    padding: 0px 8px
+}
+/* Tarjeta producto */
+.grid-producto {
+    .nombre-categoria {
+        width:100%;
+        display:block;
+        font-weight: 800;
+        color: #2B2E3A;
+        padding: 5px;
+         h3 {font-weight:800;color:$negro;margin:0px;
+            @include tablet-up{margin:10px 0px};
+            @include limit-character
+        }
+        }
+    .card-producto {
+        border-radius:5px;
+        width:auto;
+        @include box-shadow;
+        .card-img {
+            position:relative;
+            height: auto;
+            text-align: center;
+            img {   
+                height: 95px;
+                width: 100%;
+                object-fit: contain;
+                margin: 0 auto;
+                @include smartphone-small{height:80px}
+                @include tablet {height: 130px}
+                @include tablet-big {height: 150px}
+                }   
+
+        }
+
+
+        .card-body {
+            padding: 10px 15px;
+            text-align: left;
+            @include tablet {padding: 30px 20px;}
+                .card-title {
+                    min-height: 2rem;
+                    margin-bottom: 0px;
+                    overflow: hidden;
+                    .nombre-producto, .info-producto {  
+                        @include limit-character;
+                        max-width: 100%;
+                    }
+                        .nombre-producto {
+                            color:$negro;
+                            line-height: 24px;
+                            @include tablet-up{line-height: 34px}
+                        }
+                        .info-producto {
+                            color:$gris-oscuro;
+                            font-weight:300;  
+                        }
+                }
+
+                .card-text {
+                    .precio-producto {
+                        font-weight:700;
+                        color:$negro;
+                        font-size: 130%;
+                        @include tablet {font-size:110%}
+                        @include tablet-big {font-size:130%}
+                    }
+                }
+    
+            }
+    }
+}
+
+/* Detalle producto */
+.header-detalle {
+    .toolbar-background-md,
+    .toolbar-background-ios {background:var(--colorPrimario);border:none;}
+    .toolbar-title, .bar-button {color:white}
+    .toolbar-title {font-size:2.2rem;font-weight:400}
+    .icon {margin:0px 5px;font-size:20px;font-weight:600}
+    .text {text-transform: none;font-size:1.8rem;font-weight:600}
+
+    /* ORGANIZAR ORDEN ELEMENTOS DEL TOOLBAR*/
+    .toolbar-content-md {flex:1;order: 2;}
+    .bar-buttons-md {order:1}
+ 
+}
+
+.contenido-detalle {
+    background:white;
+    .card-producto {
+        width:auto;
+        box-shadow:none;
+        text-align: center;
+        .card-img {
+            position:relative;
+            text-align: center;
+            img {   
+                margin: 0 auto;
+                height: 200px;
+                width:auto;
+                }      
+        }
+
+
+        .card-body {
+            padding: 10px 15px;
+            @include tablet {padding: 30px 20px;}
+                .card-title {
+                    min-height: 2rem;
+                    margin-bottom: 0px;
+                    overflow: hidden;
+                    .nombre-producto, .info-producto {  
+                        max-width: 100%;
+                    }
+                        .nombre-producto {
+                            color:$negro;
+                            line-height: 24px;
+                            font-size: 2.4rem;
+                            @include tablet-up{line-height: 34px}
+                        }
+                        .info-producto {
+                            font-size:2.2rem;
+                            color:$gris-oscuro;
+                            font-weight:300;  
+                        }
+
+                        .categoria-producto {
+                            font-size:2.2rem;
+                            font-weight:800;  
+                            margin-bottom:1rem;
+                            color:$negro
+                        }
+                }
+
+                .card-text {
+                    .precio-producto {
+                        font-weight:800;
+                        color:$negro;
+                        font-size: 4rem;
+                        margin-bottom:1rem
+                    }
+                }
+    
+            }
+
+    }
+}
+
+/* BOTON CANTIDAD */
+.btn-cantidad {
+    width: 100%;
+    border: 2px solid $gris-claro;
+    box-shadow: none;
+    padding: 0px;
+    border-radius:5px;
+    margin-top:0rem;
+    display:flex;
+    height:auto;
+    align-items: center;
+    button, .unidades, {display:inline-block;cursor:pointer}
+    .mas, .menos {
+    box-shadow:none;margin:5px;font-size: 2.2rem;padding: 10px 5px;font-weight:800;border-radius:3px;
+    border-radius:0px;flex:1;border:none;min-width: 28px!important;height:100%;font-weight:600;width:100%;}
+    .unidades {padding: 2px 0px;flex:3;font-size:3.5rem;color:$gris-oscuro}
+    .mas {background:var(--colorPrimario);color:white;}
+    .menos {background:$gris-claro;color:$gris-oscuro;}
+
+    .wrapper { 
+        width:100%;
+        .btn-accion {
+            height:100%;
+            width:100%;
+            background-color:var(--colorPrimario);
+            letter-spacing: 1pt;
+            color:white;
+            border:2px solid var(--colorPrimario);
+            box-shadow:none;
+            height:100%;
+            font-size:2.5rem;
+            text-transform: none;
+            margin:0px;
+            padding:10px 0px
+          }
+    }
+    
+
+  }
+  
+
+
+/*********************** CABECERA **************/
+.cabecera {
+    width:100%;
+    border-radius:0px;
+    margin-bottom: .5rem;
+    @include box-shadow;
+    .item-inner {margin-left: 5px!important;}
+    .item-ios, .item-md {padding-left:10px;@include tablet-up{padding-left: 20px}}
+    .wrapper {
+        padding:0px;
+        display:flex;
+        .icono {margin-right:10px}
+        .link {color: $gris;font-weight:400}
+        .item-icon {margin:0;@include tablet-up{margin-right:10px}}
+        .label {display:flex;align-items: center;margin: 8px 8px 8px 0;}
+        .datos, .total {border:none}
+        .datos {.item-icon {color: $gris}}
+        .total { 
+         
+            h2 {text-transform:uppercase;font-weight:800;margin:0;color:$negro;};
+            span {
+                margin-left:5px;
+                border-radius:3px;
+                color: var(--colorPrimario);
+                margin-left:5px;
+                font-weight: 600;
+            }
+        }
+        .total > .item-inner > .input-wrapper > .label {justify-content: flex-end}
+    }
+}
+

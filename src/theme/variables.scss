@@ -13,6 +13,7 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 
 
 // Shared Variables
@@ -41,11 +42,34 @@ $colors: (
   dark:       #222
 );
 
+$gris:#ababbf;
+$gris-oscuro:#545E6E;
+$gris-claro:#dadae4;
+$negro:#2B2E3A;
+$fondo: #f8f8fb;
+
+/*.theme-wrapper {
+  --cardBackground: #f4f4f4;
+}*/
+
+
+/*$variables: (
+  --cardBackground: var(--cardBackground),
+  );*/
+
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+/*@function var($variable) {
+  @return map-get($variables, $variable);
+}*/
+
+
+/*@function var($variable) {
+  @return map-get($variables, $variable);
+}*/
 
 
 

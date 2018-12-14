@@ -1,0 +1,9 @@
+<ion-slides pager>
+
+    <ion-slide *ngFor="let slide of slides" [ngStyle]="{'background' : 'url(' + slide.imageUrl + ')'}">
+      <div class="overlay"></div>
+      <a class="link">Crea tu tienda ya   <img class="icono" src="assets/imgs/cursor.svg"></a>
+      <img class="logo" src="assets/imgs/logo_blanco.png">
+    </ion-slide>
+  
+  </ion-slides>

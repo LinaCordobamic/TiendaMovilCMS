@@ -1,0 +1,31 @@
+
+
+<ion-grid class="grid-producto">
+  <ion-row>
+  <div class="nombre-categoria"><h3>Frutas y verduras</h3></div>
+      <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 *ngFor="let producto of listaproductos">
+        <ion-card class="card-producto" no-margin (click)="openModal()">
+          <ion-card-content no-padding class="card-img">
+            <span class="cant-carrito right">{{producto.carrito}}</span>
+            <img src="{{producto.imagen}}" alt="Card image cap">
+            <p class="cinta-info">{{producto.descuento}}</p>
+          </ion-card-content>
+          <ion-card-content class="card-body">
+            <div class="card-title">
+                <p class="nombre-producto">{{producto.nombre}}</p>
+                <p class="info-producto">{{producto.info}}</p>
+            </div>
+
+            <div class="card-text">
+              <p class="precio-producto">${{producto.precio}}</p>
+            </div>
+         
+          
+          </ion-card-content>
+   
+        </ion-card>
+      </ion-col>
+
+
+  </ion-row>
+</ion-grid>
